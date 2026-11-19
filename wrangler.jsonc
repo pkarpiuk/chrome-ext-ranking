@@ -1,0 +1,9 @@
+{
+  // Czyste Cloudflare Static Assets: bez skryptu Workera, bez uwierzytelniania; wdrażamy katalog public/ z laptopa (npm run deploy).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chrome-ext-ranking",
+  "compatibility_date": "2026-11-14",
+  "assets": {
+    "directory": "./public"
+  }
+}

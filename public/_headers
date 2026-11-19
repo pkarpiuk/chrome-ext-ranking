@@ -1,0 +1,18 @@
+# Cloudflare Static Assets: ten plik nie jest serwowany, tylko czytany przez platformę (maks. 100 reguł).
+#
+# Bez reguły Cloudflare wysyła "Cache-Control: public, max-age=0, must-revalidate" i ETag: przeglądarka trzyma kopię, ale przed każdym
+# użyciem pyta serwer (304, gdy plik się nie zmienił). To właściwe dla db.js, index.html, main.js, help.html i icons-sprite.css
+# (wskazuje aktualny sprite): nowe dane po wdrożeniu są widoczne od razu.
+# Poniżej tylko pliki, które mogą leżeć w cache długo.
+
+# sprite ikon: nazwa zawiera skrót z zawartości (icons-sprite-<skrót>.webp), więc nowa wersja ma nowy adres
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+# ExtJS i grafika (nazwy bez wersji): 7 dni
+/ext-all.js
+  Cache-Control: public, max-age=604800
+/resources/*
+  Cache-Control: public, max-age=604800
+/favicon.ico
+  Cache-Control: public, max-age=604800
